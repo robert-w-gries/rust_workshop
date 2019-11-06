@@ -1,0 +1,7 @@
+[package]
+name = "rust_workshop"
+version = "0.1.0"
+authors = ["Bharathi Seshadri <bseshadr@cisco.com>", "Rob Gries <robgrie@cisco.com>"]
+edition = "2018"
+
+[dependencies]
