@@ -29,3 +29,14 @@ apt install build-essential
 ```
 yum install gcc
 ```
+
+## Running the examples
+
+You can run any of the code examples by using `cargo run --example [example]`.
+
+To run the mutex example, execute the following commands:
+
+```bash
+cd example_project
+cargo run --example mutex
+```
