@@ -9,4 +9,3 @@ fn main() {
         println!("Connection established!");
     }
 }
-
