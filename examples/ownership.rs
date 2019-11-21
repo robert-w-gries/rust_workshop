@@ -1,0 +1,27 @@
+
+fn simple_types() {
+    // Ownership rules do not apply to values stored in stack
+    let mut a = 10;
+    let b = a;
+    a = 20;
+    let s1 = "hello";
+    let s2 = s1;
+    println!("a = {}",a);
+    println!("b = {}",b);
+    println!("s2 = {}",s2);
+}
+
+fn test_ownership() {
+    simple_types(); // Ownership does not apply here
+    let s1= String::from("Hello");
+    let mut s2 = s1;
+    s2.push_str("world");
+    println!("s1 = {}, s2 = {}", s1, s2); // Error
+    println!("s2 = {}", s2); // No Error
+}
+
+fn main() {
+
+  test_ownership();
+
+}
