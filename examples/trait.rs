@@ -15,7 +15,9 @@ impl Draw for Square {
 }
 
 struct Circle {
-  radius:u32
+  radius:u32,
+  x: f64,
+  y: f64
 }
 
 impl Draw for Circle {
