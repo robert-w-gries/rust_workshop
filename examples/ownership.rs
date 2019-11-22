@@ -16,8 +16,11 @@ fn test_ownership() {
     let s1= String::from("Hello");
     let mut s2 = s1;
     s2.push_str("world");
-    println!("s1 = {}, s2 = {}", s1, s2); // Error
+
     println!("s2 = {}", s2); // No Error
+
+    #[cfg(feature = "broken")]
+    println!("s1 = {}, s2 = {}", s1, s2); // Error
 }
 
 fn main() {
