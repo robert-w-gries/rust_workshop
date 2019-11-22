@@ -23,23 +23,32 @@ fn integer_overflow() {
 fn type_error() {
     let a:i32 = 251;
     let b:u32 = 251;
-    // uncomment the if-else to see the error
-   // if a == b {println!("a==b");}
-    //else {println!("a != b");}
+
+    #[cfg(feature = "broken")]
+    {
+    if a == b { println!("a==b"); }
+      else { println!("a != b"); }
+    }
 }
 
 fn main() {
     let b: bool = true; // let b = true;
     println!("bool is {}", b);
     let i:i32 = 10;
-    //let j:u8 = 257; // error
+
+    #[cfg(feature = "broken")]
+    let j:u8 = 257; // error
+
     let x:usize = 0;
     let y:isize = 0;
     println!("size of usize/isize is {}/{}",mem::size_of_val(&x), mem::size_of_val(&y));
 
-    // integer_overflow();
+    #[cfg(feature = "broken")]
+    integer_overflow();
 
     let arr = [1,2,3,4,5];
     println!("arr is {:?}",arr);
-    // array_overflow();
+
+    #[cfg(feature = "broken")] 
+    array_overflow();
 }
