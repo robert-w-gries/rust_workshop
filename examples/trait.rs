@@ -14,6 +14,7 @@ impl Draw for Square {
   }
 }
 
+#[derive(Debug)]
 struct Circle {
   radius:u32,
   x: f64,
@@ -22,7 +23,7 @@ struct Circle {
 
 impl Draw for Circle {
   fn draw(&self) {
-    println!("Drawing a circle of radius {}", self.radius);
+    println!("Drawing a circle of radius {:?}", self);
   }
 }
 
@@ -31,6 +32,6 @@ fn main() {
   let square = Square {side:10};
   square.draw();
   
-  let circle = Circle {radius:10};
+  let circle = Circle {radius:10, x:0.0, y:0.0};
   circle.draw();
 }
