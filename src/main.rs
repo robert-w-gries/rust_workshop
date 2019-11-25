@@ -6,12 +6,13 @@ use std::time::Duration;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
-    println!("\n\nType '127.0.0.1:7878/' into your browser!");
-    println!("Type '127.0.0.1:7878/slow' to simulate a slow request!");
+    println!("\n\nType 'http://127.0.0.1:7878/' into your browser!");
+    println!("Type 'http://127.0.0.1:7878/slow' to simulate a slow request!");
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
+        // TODO: create threads for each connection
         handle_connection(stream);
     }
 }
