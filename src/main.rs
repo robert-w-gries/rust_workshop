@@ -24,7 +24,9 @@ fn main() {
 
         // TODO #4: create threads for each connection
         // Hint: Make sure to use the `ThreadPool`!
-        handle_connection(stream);
+        pool.execute(|| {
+            handle_connection(stream);
+        });
     }
 }
 

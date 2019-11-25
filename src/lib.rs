@@ -45,10 +45,11 @@ impl ThreadPool {
         // The solution is to wrap the receiver in Arc and Mutex so that we can
         // safely share ownership of the single receiver across threads.
         // TODO #2: Create reference counted mutex for receiver
+        let receiver: Arc<Mutex<mpsc::Receiver<Job>>> = Arc::new(Mutex::new(receiver));
 
         for id in 0..size {
             // TODO #1: Uncomment me!
-            // workers.push(Worker::new(id, receiver.clone()));
+            workers.push(Worker::new(id, receiver.clone()));
         }
 
         Ok(ThreadPool { workers, sender })
@@ -68,6 +69,7 @@ impl ThreadPool {
 
         // TODO #3: Send job to channel
         // Hint: Who owns the sender?
+        self.sender.send(job).unwrap();
     }
 }
 
