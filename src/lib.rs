@@ -81,6 +81,7 @@ impl Worker {
     fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let thread = thread::spawn(move || {
             loop {
+                println!("Worker {} got a job; executing.", id);
                 let job: Job;
                 // TODO: Read jobs from the channel and store in variable
                 // TODO: Uncomment me!
