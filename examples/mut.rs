@@ -4,7 +4,7 @@ fn test_mut() {
     x = x + 10; 			// x = 20 
     println!("in test_mut #2 x = {}",x);
     {
-      let x = 10;               	// x = 30 
+      let x = 10;               	// x = 10 
       println!("in test_mut #3 x = {}", x);
     }
     let x = x + 10;			// x = ? 
