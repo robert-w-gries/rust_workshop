@@ -54,7 +54,9 @@ struct Worker {
 impl Worker {
     fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let thread = thread::spawn(move || {
-            // TODO: Read jobs from channel and execute them
+            loop {
+                // TODO: Read jobs from channel and execute them
+            }
         });
 
         Worker {
