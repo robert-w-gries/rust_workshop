@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+use mpsc::Receiver;
 use std::sync::{mpsc, Arc, Mutex};
 use std::thread;
 
@@ -42,11 +43,11 @@ impl ThreadPool {
         // We need to pass the receiver to each of the workers. But we cannot
         // have multiple receivers in a Multi-producer, Single-consumer channel!
         // The solution is to wrap the receiver in Arc and Mutex so that we can
-        // safely share multiple references to the receiver across workers.
-        // TODO: Create reference counted mutex for receiver
+        // safely share ownership of the single receiver across threads.
+        // TODO #2: Create reference counted mutex for receiver
 
         for id in 0..size {
-            // TODO: Uncomment me!
+            // TODO #1: Uncomment me!
             // workers.push(Worker::new(id, receiver.clone()));
         }
 
@@ -65,7 +66,7 @@ impl ThreadPool {
         //       the code block we want to execute
         let job: Job = Box::new(f);
 
-        // TODO: Send job to channel
+        // TODO #3: Send job to channel
         // Hint: Who owns the sender?
     }
 }
@@ -76,16 +77,21 @@ struct Worker {
 }
 
 impl Worker {
-    fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
+    fn new(id: usize, receiver_mutex: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let thread = thread::spawn(move || {
             loop {
-                let job: Job;
-                // TODO: Read jobs from the channel and store in variable
+                // Locking the mutex provides us a smart pointer `MutexGuard<Receiver<Job>>`
+                // By calling `recv()`, the smart pointer is implicitly dereferenced to grant
+                // access to the `Receiver<Job>`!
+                //
+                // Note: `recv()` is a blocking call. This thread will be blocked until it receives
+                //       a message through the channel
+                let receiver = receiver_mutex.lock().unwrap();
+                let job: Job = receiver.recv().unwrap();
 
                 println!("Worker {} got a job; executing.", id);
 
-                // TODO: Uncomment me!
-                // job.execute();
+                job.execute();
             }
         });
 
@@ -93,7 +99,7 @@ impl Worker {
     }
 }
 
-// Hack for the compiler to properly take ownership of the value inside the Box
+// Hack for the compiler to properly take ownership of the closure inside the Box
 // For more info on why this is needed, read the following:
 // https://doc.rust-lang.org/book/ch20-02-multithreaded.html#implementing-the-execute-method
 trait FnBox {
