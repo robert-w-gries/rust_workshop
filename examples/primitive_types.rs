@@ -4,51 +4,57 @@
 use std::mem;
 
 fn array_overflow() {
-    let arr = [1,2,3,4];
+    let arr = [1, 2, 3, 4];
     for i in 0..5 {
         println!("array[{}] = {}", i, arr[i]);
     }
 }
 
 fn integer_overflow() {
-   let a:i32=2147483647; // 7fff ffff
-    if a+1 > a {
+    let a: i32 = 2147483647; // 7fff ffff
+    if a + 1 > a {
         println!("no overflow");
-    }
-    else {
+    } else {
         println!("overflow");
     }
 }
 
 fn type_error() {
-    let a:i32 = 251;
-    let b:u32 = 251;
+    let a: i32 = 251;
+    let b: u32 = 251;
 
     #[cfg(feature = "broken")]
     {
-    if a == b { println!("a==b"); }
-      else { println!("a != b"); }
+        if a == b {
+            println!("a==b");
+        } else {
+            println!("a != b");
+        }
     }
 }
 
 fn main() {
     let b: bool = true; // let b = true;
     println!("bool is {}", b);
-    let i:i32 = 10;
+    let i: i32 = 10;
 
     #[cfg(feature = "broken")]
-    let j:u8 = 257; // error
+    let j: u8 = 257; // error
 
-    let x:usize = 0;
-    let y:isize = 0;
-    println!("size of usize/isize is {}/{}",mem::size_of_val(&x), mem::size_of_val(&y));
+    let x: usize = 0;
+    let y: isize = 0;
+    println!(
+        "size of usize/isize is {}/{}",
+        mem::size_of_val(&x),
+        mem::size_of_val(&y)
+    );
 
     #[cfg(feature = "broken")]
     integer_overflow();
 
-    let arr = [1,2,3,4,5];
-    println!("arr is {:?}",arr);
+    let arr = [1, 2, 3, 4, 5];
+    println!("arr is {:?}", arr);
 
-    #[cfg(feature = "broken")] 
+    #[cfg(feature = "broken")]
     array_overflow();
 }
