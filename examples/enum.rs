@@ -1,4 +1,5 @@
- #[derive(Debug)]
+#![allow(dead_code)]
+#[derive(Debug)]
  enum Shape {
    Square,
    Rectangle,
