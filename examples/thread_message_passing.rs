@@ -1,5 +1,5 @@
-use std::thread;
 use std::sync::mpsc;
+use std::thread;
 
 fn main() {
     let (tx1, rx) = mpsc::channel();
@@ -13,7 +13,8 @@ fn main() {
         tx2.send(String::from("World")).unwrap();
     });
 
-    for received in rx { // blocks until channel hangs up
+    for received in rx {
+        // blocks until channel hangs up
         println!("Got: {}", received);
     }
 }

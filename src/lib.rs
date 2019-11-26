@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::sync::{Arc, Mutex, mpsc};
+use std::sync::{mpsc, Arc, Mutex};
 use std::thread;
 
 #[derive(Debug)]
@@ -19,6 +19,7 @@ pub struct ThreadPool {
     sender: mpsc::Sender<Job>,
 }
 
+/// Wrapper for closure that can be sent via message passing
 type Job = Box<dyn FnBox + Send + 'static>;
 
 impl ThreadPool {
@@ -27,7 +28,7 @@ impl ThreadPool {
     /// Note: A pool size of zero will result in an error
     pub fn new(size: usize) -> Result<ThreadPool, PoolCreationError> {
         if size == 0 {
-            return Err(PoolCreationError::EmptyPool)
+            return Err(PoolCreationError::EmptyPool);
         }
 
         #[allow(unused_mut)]
@@ -49,16 +50,13 @@ impl ThreadPool {
             // workers.push(Worker::new(id, receiver.clone()));
         }
 
-        Ok(ThreadPool {
-            workers,
-            sender,
-        })
+        Ok(ThreadPool { workers, sender })
     }
 
     /// Sends the job to a worker that will execute the job when available
     pub fn execute<F>(&self, f: F)
-        where
-            F: FnOnce() + Send + 'static
+    where
+        F: FnOnce() + Send + 'static,
     {
         // We cannot send a value of unknown size unless we use `Box`
         // Note: `Job` is a type alias for `Box<dyn FnOnce...>`
@@ -91,10 +89,7 @@ impl Worker {
             }
         });
 
-        Worker {
-            id,
-            thread,
-        }
+        Worker { id, thread }
     }
 }
 
