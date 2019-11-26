@@ -14,8 +14,8 @@ fn simple_types() {
 fn test_ownership() {
     simple_types(); // Ownership does not apply here
     let s1= String::from("Hello");
-    let mut s2 = s1;
-    s2.push_str("world");
+    let mut s2 = s1; // Ownership of s1 is moved to s2
+    s2.push_str("world"); // Modifying s2
 
     println!("s2 = {}", s2); // No Error
 
@@ -28,3 +28,4 @@ fn main() {
   test_ownership();
 
 }
+
