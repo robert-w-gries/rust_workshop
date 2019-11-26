@@ -42,7 +42,6 @@ fn main() {
     a = Answer::Response("Hello".to_string());
     analyze_response(a);
 
-    let result = is_even(3);
-    println!("{:?}", result);
+    println!("{:?}", is_even(3));
     println!("{:?}", is_even(30));
 }
