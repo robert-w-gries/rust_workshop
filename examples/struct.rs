@@ -1,21 +1,21 @@
-
 // C-like struct
 
 #[derive(Debug)]
-struct Color { 	
-	r: u8,
-	g: u8,
-	b: u8
+struct Color { 
+        r: u8,
+        g: u8,
+        b: u8
 }
 
 // tuple struct
 #[derive(Debug)]
 struct ColorTuple (u8, u8, u8); 
+
 // tuple struct with one field -- newtype
 struct Miles(u32);
 
 // Unit struct
-struct foo;
+struct Foo;
 
 fn main() {
 
@@ -27,7 +27,7 @@ fn main() {
  println!("tuplestruct is {} {} {}", tuplestruct.0, tuplestruct.1, tuplestruct.2);
  println!("tuplestruct debug print {:?}", tuplestruct);
  // destructure the tuple
- let (r, g, b) = tuplestruct;
+ let ColorTuple(r, g, b) = tuplestruct;
  println!("Destructuring tuplestruct {} {} {} ", r, g, b);
 
  let distance = Miles(100);
