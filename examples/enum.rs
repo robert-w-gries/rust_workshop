@@ -7,14 +7,6 @@ enum Shape {
     Hexagaon,
 }
 
-fn is_even(num: i32) -> Option<bool> {
-    if num % 2 == 0 {
-        Some(true)
-    } else {
-        None
-    }
-}
-
 #[derive(Debug)]
 enum Answer {
     Yes,
@@ -45,3 +37,12 @@ fn main() {
     println!("{:?}", is_even(3));
     println!("{:?}", is_even(30));
 }
+
+fn is_even(num: i32) -> Option<bool> {
+    if num % 2 == 0 {
+        Some(true)
+    } else {
+        None
+    }
+}
+
