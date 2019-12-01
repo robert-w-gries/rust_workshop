@@ -1,8 +1,16 @@
 # Rust Workshop
 
-Materials for presenting at Develop@Cisco
+## Examples on Rust Playground
 
-## Setup
+* Concurrency Examples
+  * [thread_new]() - Spawn a new thread and block main thread until it's completed
+  * [thread_move]() - Demonstrate how ownership works with threads
+  * [thread_message_passing]() - Establish a multi-producer, single-consumer channel to pass values between threads
+  * [mutex]() - Demonstrate synchronization type `Mutex`
+  * [arc]() - Demonstrate synchronization type `Arc` (used for reference counting)
+  * [thread_mutex_arc]() - Demonstrate shared-state concurrency using synchronization types
+
+## Setup Rust on Local Machine
 
 ### Mac
 
@@ -30,7 +38,7 @@ apt install build-essential
 yum install gcc
 ```
 
-## Running the examples
+## Running the examples on local machine
 
 You can run any of the code examples by using `cargo run --example [example]`.
 
