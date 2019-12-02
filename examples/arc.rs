@@ -46,13 +46,16 @@ fn main() {
     let ref_c: Arc<Vec<u32>> = ref_a.clone();
 
     // Verify reference count == 3
-    assert_eq!(Arc::strong_count(&ref_b), 3);
+    assert_eq!(Arc::strong_count(&ref_a), 3);
 
-    let h1 = thread::spawn(move || {
+    thread::spawn(move || {
         println!("Vec = {:?}", ref_b);
-    });
+        // implicit drop(ref_b); referenece count decremented
+    }).join().unwrap();
 
-    let h2 = thread::spawn(move || {
+    assert_eq!(Arc::strong_count(&ref_a), 2);
+
+    thread::spawn(move || {
         println!("Vec = {:?}", ref_c);
 
         // error: cannot borrow data in an `Arc` as mutable
@@ -64,8 +67,9 @@ fn main() {
         // One struct that provides this capability is the `Mutex` struct.
         #[cfg(feature = "broken")]
         ref_c.push(4);
-    });
 
-    h1.join().unwrap();
-    h2.join().unwrap();
+        // implicit drop(ref_c); referenece count decremented
+    }).join().unwrap();
+
+    assert_eq!(Arc::strong_count(&ref_a), 1);
 }
