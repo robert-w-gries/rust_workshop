@@ -13,7 +13,7 @@
   
 * Examples for Type Safety 
    
-  * [Array Overflow_Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9a299b5171af1befe2bc0cdf66e6d315)
+  * [Array Overflow_Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=183948527a04b5de2202a6b150d2adf8)
   
   * [Integer Overflow C](https://godbolt.org/z/AAz87P)
   * [Integer Overflow Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=bb0e32e4647558124e2b8f8e5edf2113)
