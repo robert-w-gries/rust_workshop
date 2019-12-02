@@ -25,9 +25,7 @@ fn main() {
     thread::spawn(move || {
         println!("Vec = {:?}", vec);
         drop(vec); // Note: redundant drop; would have implicitly been called
-    })
-    .join()
-    .unwrap();
+    }).join().unwrap();
 
     // Ownership Error: "borrow of moved value: `vec`"
     //
