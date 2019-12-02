@@ -2,12 +2,15 @@
 
 ## Examples on Rust Playground
 
-* [Mutability](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=68d88421f6c54365687ef12e4a1e7c04) - Variables are immutable by default
+* General
+  * [Mutability](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=68d88421f6c54365687ef12e4a1e7c04) - Variables are immutable by default
 
-* [Structs 1](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=c1fbd465f3bffe32aa5c7e73bcb9afc2) - types of struct
-* [Structs 2](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=59d788884a8b27aab1893ea20514a6c9) - Show impl on structs
+  * [Structs 1](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=c1fbd465f3bffe32aa5c7e73bcb9afc2) - types of struct
+  * [Structs 2](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=59d788884a8b27aab1893ea20514a6c9) - Show impl on structs
 
-* [Enums](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=1cfcd6d78a9c1235601877b72446e216)
+  * [Enums](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=1cfcd6d78a9c1235601877b72446e216)
+  * [Traits](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=439bbd25c137a286056c7b797ed89c9c)
+  
 * Examples for Type Safety 
    
   * [Array Overflow_Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9a299b5171af1befe2bc0cdf66e6d315)
@@ -34,7 +37,20 @@
 
 
 * Examples for Memory Safety
-
+  * [Ownership](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=14eac89deba9e56250feedc9a8b4af47)
+  
+  * [Dangling reference C](https://godbolt.org/z/syNGAE)
+  * [Dangling reference Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=55f2c92d176f53d88c35ba9405c79a3d)
+   
+  * [Double free C](https://godbolt.org/z/kDMfmF)
+  * [Double free Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9be54a3a84e09833612d2d2747edeada)
+  
+  * [Use after free C](https://godbolt.org/z/6MDGgT)
+  * [Use after free Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=6400c76ec703a4624e4aae07d1b3e0c2)
+  
+  * [Iterator Invalidation Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=50ed239714ed3b68a7e0d152b175b7f6)
+  * [Iterator Invalidation C++](https://godbolt.org/z/YjMV2w)
+  
 * Concurrency Examples
   * [thread_new]() - Spawn a new thread and block main thread until it's completed
   * [thread_move]() - Demonstrate how ownership works with threads
