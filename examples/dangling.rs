@@ -1,3 +1,4 @@
+#[cfg(feature = "broken")]
 fn case1() -> &String {
    let x = String::from("hello"); 
    println!("case 1 {}", x);
@@ -17,5 +18,6 @@ fn case1() -> &String {
 // }
 
 fn main() {
+  #[cfg(feature = "broken")]
   println!("after case1() {}", case1());
 }

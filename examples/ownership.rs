@@ -21,6 +21,7 @@ fn test_ownership_1() {
 
     println!("s2 = {}", s2); // No Error
 
+    #[cfg(feature = "broken")]
     println!("s1 = {}", s1); // Error
 }
 
@@ -29,6 +30,7 @@ fn test_make_copy(x: String) {
 }
 
 // Ownership is moved/transferred with argument passing 
+#[cfg(feature = "broken")]
 fn test_ownership_2() {
  let s1 = String::from("Hello");
  test_make_copy(s1); 
@@ -37,6 +39,7 @@ fn test_ownership_2() {
 
 fn main() {
   test_ownership_1();
+  #[cfg(feature = "broken")]
   test_ownership_2();
 }
 
