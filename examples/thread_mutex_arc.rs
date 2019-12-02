@@ -16,13 +16,17 @@ fn ownership_error() {
         *num += 1;
         // `counter` is owned by this thread and is freed here
         // drop(counter) is implicitly called
-    }).join().unwrap();
+    })
+    .join()
+    .unwrap();
 
     thread::spawn(move || {
         // Error! The other thread has already freed the counter data.
         let mut num = counter.lock().unwrap();
         *num += 1;
-    }).join().unwrap();
+    })
+    .join()
+    .unwrap();
 }
 
 fn main() {
@@ -50,19 +54,23 @@ fn main() {
         let mutex = counter_ref1.deref();
 
         // lock mutex => `MutexGuard` smart pointer
-        let mut data_guard = mutex.lock().unwrap(); 
+        let mut data_guard = mutex.lock().unwrap();
 
         // dereference `MutexGuard` => mutable data
         *data_guard += 1;
 
         // implicit `drop(data_guard)` => mutex unlocked
         // implicit `drop(counter_ref1)` => reference count decremented
-    }).join().unwrap();
+    })
+    .join()
+    .unwrap();
 
     // Increment counter by 1
     thread::spawn(move || {
         *counter_ref2.lock().unwrap() += 1;
-    }).join().unwrap();
+    })
+    .join()
+    .unwrap();
 
     println!("Result: {}", *counter_ref3.lock().unwrap());
 }
