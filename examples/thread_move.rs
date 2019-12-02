@@ -6,7 +6,7 @@ use std::thread;
 // The main thread owns `vec` and will free it when the main thread completes exeuction.
 // Since the spawned thread may live longer than the main thread, we have a potential use after free!
 // Enforcement of ownership + lifetime prevents this potential buggy code from compiling.
-//#[cfg(feature = "broken")]
+#[cfg(feature = "broken")]
 fn lifetime_error() {
     let vec = vec![1, 2, 3];
     thread::spawn(|| {

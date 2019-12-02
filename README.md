@@ -52,12 +52,17 @@
   * [Iterator Invalidation C++](https://godbolt.org/z/YjMV2w)
   
 * Concurrency Examples
-  * [thread_new]() - Spawn a new thread and block main thread until it's completed
-  * [thread_move]() - Demonstrate how ownership works with threads
-  * [thread_message_passing]() - Establish a multi-producer, single-consumer channel to pass values between threads
-  * [mutex]() - Demonstrate synchronization type `Mutex`
-  * [arc]() - Demonstrate synchronization type `Arc` (used for reference counting)
-  * [thread_mutex_arc]() - Demonstrate shared-state concurrency using synchronization types
+  * [Spawn a Thread](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=b26fb88d21ac63f7939bafe0870f27fa)
+
+  * [Thread and Ownership](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=4f39635544491e029b8cb4e143250e10)
+
+  * [Message Passing Between Threads](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f38068610258253fa5578a3ab8fde7e3)
+
+  * [`Mutex` (Synchronization Type)](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=a07fda50a6a1acbbe8a1506412898fb3)
+
+  * [`Arc` (Sycnhronization Type)](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=5848e4eefb23175b70efa288b4a3f3e1)
+
+  * [Shared-state Concurrency with `Mutex` and `Arc`](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=c414c108b55e76d1811e79e9f3c7bfc7)
 
 ## Setup Rust on Local Machine
 
