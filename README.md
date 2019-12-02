@@ -14,16 +14,16 @@
 * Examples for Type Safety 
    
   * [Array Overflow C](https://godbolt.org/z/Pg2pUY)
-  * [Array Overflow_Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=183948527a04b5de2202a6b150d2adf8)
+  * [Array Overflow Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=183948527a04b5de2202a6b150d2adf8)
   
   * [Integer Overflow C](https://godbolt.org/z/AAz87P)
   * [Integer Overflow Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=bb0e32e4647558124e2b8f8e5edf2113)
 
   * [Integer Underflow C](https://godbolt.org/z/_vBjjz)
-  * [Integer Underflow](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=2a563fa32275ec177c02e5f4848d5de4)
+  * [Integer Underflow Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=2a563fa32275ec177c02e5f4848d5de4)
 
-  * [Character Overflow](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=781fb9a66fd76c327444b846a172de36)
   * [Character Overflow C](https://godbolt.org/z/QJwANA)
+  * [Character Overflow Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=781fb9a66fd76c327444b846a172de36)
 
   * [Typing Error 1 C](https://godbolt.org/z/tw7y6x)  - signed/unsigned (assignment)
   * [Typing Error 1 Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f12b3ec425de4bfa754fa25b3ee2a212)  - signed/unsigned (assignment)
