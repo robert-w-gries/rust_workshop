@@ -95,9 +95,14 @@ yum install gcc
 ## Running the examples on local machine
 
 You can run any of the code examples by using `cargo run --example [example]`.
+You can compile the error code by using `cargo run --example [example] --features=broken`.
 
 To run the mutex example, execute the following commands:
 
 ```bash
 cargo run --example mutex
+```
+
+```bash
+cargo run --example mutex --features=broken
 ```
