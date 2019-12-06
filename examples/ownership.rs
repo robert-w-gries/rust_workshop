@@ -1,5 +1,6 @@
 fn simple_types() {
-    // Ownership rules do not apply to values stored in stack
+    // Ownership rules do not apply to (primitive)types that implement
+    // the 'Copy' trait 
     let mut a = 10;
     let b = a;
     a = 20;
